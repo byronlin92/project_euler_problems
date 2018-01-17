@@ -1,21 +1,31 @@
 import unittest
 
+#my original solution before looking at answer
+# def sum_of_natural_numbers(input_num):
+    # sum = 0
+    # less_than_input = True
+    # multiples_of_3 = 1
+    # multiples_of_5 = 1
+    # while (less_than_input):
+    #     if ((3 * multiples_of_3) < input_num):
+    #         sum = sum + (3 * multiples_of_3)
+    #         multiples_of_3 += 1
+    #     elif ((5 * multiples_of_5) < input_num):
+    #         sum = sum + (5 * multiples_of_5)
+    #         multiples_of_5 += 1
+    #     elif (((3 * multiples_of_3) >= input_num) and ((5 * multiples_of_5) >= input_num)):
+    #         less_than_input = False
+    # return sum
+
+#solution after looking at answers online
 def sum_of_natural_numbers(input_num):
     sum = 0
-    less_than_input = True
-    multiples_of_3 = 1
-    multiples_of_5 = 1
-    while (less_than_input):
-        if ((3 * multiples_of_3) < input_num):
-            sum = sum + (3 * multiples_of_3)
-            multiples_of_3 += 1
-        elif ((5 * multiples_of_5) < input_num):
-            sum = sum + (5 * multiples_of_5)
-            multiples_of_5 += 1
-        elif (((3 * multiples_of_3) >= input_num) and ((5 * multiples_of_5) >= input_num)):
-            less_than_input = False
-
+    for i in range(input_num):
+        if (i % 3 == 0) or (i % 5 == 0):
+            sum = sum + i
     return sum
+
+
 
 class TestSumOfNaturalNumbers(unittest.TestCase):
     def test_input_10(self):
@@ -37,6 +47,6 @@ class TestSumOfNaturalNumbers(unittest.TestCase):
     def test_input_6(self):
         result = sum_of_natural_numbers(6)
         self.assertEqual(result, 8)
-        
+
 if __name__ == "__main__":
     unittest.main()
